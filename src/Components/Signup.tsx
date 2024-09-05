@@ -1,4 +1,3 @@
-import React  from 'react';
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import {Button, Form, Input, FormFeedback } from "reactstrap";
@@ -29,6 +28,8 @@ const Signup = () => {
     const [SelectedStatueOption, setSelectedStatueOption] = useState(null);
     const [SelectedStatueid, setSelectedStatueid] = useState(null);
   
+    console.log("SelectedStatueid", SelectedStatueid);
+    
     const Statueoptions = [
       { value: 'Gujarat', label: 'Gujarat' },
       { value: 'Maharastra', label: 'Maharastra' },
@@ -74,6 +75,7 @@ const Signup = () => {
 
 
         onSubmit: (values) => {
+            console.log(values)
             if(currentStep == 1 ||  currentStep == 2){
                 setCurrentStep((prev) => prev +1);
             }
@@ -96,6 +98,7 @@ const Signup = () => {
     const [NextFollowupDate, setNextFollowupDate] = useState(null);
     const NextDate = (e:any) =>{
       setNextFollowupDate(e.target.value);
+      console.log(NextFollowupDate)
     }
     
     // Annual plan code 
@@ -117,6 +120,7 @@ const Signup = () => {
     const [selectedWFHOption, setSelectedWFHOption] = useState('');
     const handleradioChange = (e:any) => {
       setSelectedWFHOption(e.target.value);
+      console.log(selectedWFHOption)
     }
 
     // Checkbox code
@@ -258,7 +262,7 @@ const Signup = () => {
                                 <div className='lg:flex justify-between gap-x-3'>
                                     {PricingPlan && PricingPlan.map((item:any, k:any) =>{
                                         return(
-                                            <div className={`border  rounded-md p-4  w-full ${item.title === isSelectedPlan ? 'bg-green-200' : ''}`}  onClick={() => SelectedPlanCall(item.title)}>
+                                            <div key={k} className={`border  rounded-md p-4  w-full ${item.title === isSelectedPlan ? 'bg-green-200' : ''}`}  onClick={() => SelectedPlanCall(item.title)}>
                                                 <div className='text-[1.2rem] font-semibold'>{item.title}  </div>
                                                 <div>
                                                     {isChecked ? 

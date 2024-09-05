@@ -2,11 +2,11 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import {Button, Form, Input, FormFeedback } from "reactstrap";
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const Login = () => {
     const navigation = useNavigate();
-    const dispatch =  useDispatch();
+    // const dispatch =  useDispatch();
 
     const validation = useFormik({
         enableReinitialize: true,
@@ -21,6 +21,7 @@ const Login = () => {
           password: Yup.string().required("Please Enter Password"),
         }),
         onSubmit: (values) => {
+          console.log(values);
           // dispatch(insertlogin(values))
           validation.resetForm();
         },
